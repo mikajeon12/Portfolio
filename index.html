@@ -399,9 +399,9 @@ footer{border-top:1px solid var(--border);background:var(--deep-2);padding:26px 
 <div class="sec">
   <div class="sec-head"><div class="eyebrow">Creative work</div><div class="sec-title">Design <em>Portfolio</em></div></div>
   <div class="g-tabs">
-    <button class="g-tab on" onclick="gtab('certs',this)">Certificates</button>
-    <button class="g-tab" onclick="gtab('posters',this)">Posters & Tickets</button>
-    <button class="g-tab" onclick="gtab('logos',this)">Logos & Branding</button>
+    <button class="g-tab on" onclick="gtab('certs',this)" data-tab="certs">Certificates</button>
+    <button class="g-tab" onclick="gtab('posters',this)" data-tab="posters">Posters & Tickets</button>
+    <button class="g-tab" onclick="gtab('logos',this)" data-tab="logos">Logos & Branding</button>
   </div>
   <div class="g-panel on" id="tab-certs">
     <div class="g-grid">
@@ -553,16 +553,16 @@ footer{border-top:1px solid var(--border);background:var(--deep-2);padding:26px 
       <div class="adm-fld"><label class="adm-lbl">Email</label><input class="adm-inp" id="a-em" value="jmikairish@gmail.com"></div>
       <div class="adm-fld"><label class="adm-lbl">LinkedIn URL</label><input class="adm-inp" id="a-li" value="https://www.linkedin.com/in/mika-irish-julian"></div>
       <div class="adm-fld"><label class="adm-lbl">Upload CV (PDF)</label><input type="file" class="adm-inp" id="a-cv" accept=".pdf" style="padding:7px;"></div>
-      <hr style="border:none;border-top:1px solid var(--border);margin:14px 0;">
+      <hr style="border:none;border-top:1px solid var(--border);margin:12px 0;">
       <div class="adm-fld"><label class="adm-lbl">Change profile photo</label><input type="file" class="adm-inp" id="a-photo" accept="image/*" style="padding:7px;" onchange="previewPhoto(this)">
-        <div id="photo-preview-wrap" style="display:none;margin-top:10px;border:1px solid var(--border);padding:8px;background:var(--cream-2);text-align:center;"><img id="photo-preview" style="max-height:160px;object-fit:contain;" /><div style="font-size:10px;color:var(--text-3);margin-top:6px;">Preview — click Save photo to apply</div></div>
+        <div id="photo-preview-wrap" style="display:none;margin-top:8px;border:1px solid var(--border);padding:8px;background:var(--cream-2);text-align:center;"><img id="photo-preview" style="max-height:140px;object-fit:contain;"/><div style="font-size:10px;color:var(--text-3);margin-top:4px;">Preview — click Save Photo to apply</div></div>
       </div>
       <div class="adm-fld"><label class="adm-lbl">Photo size</label>
         <div style="display:flex;align-items:center;gap:10px;"><input type="range" id="photo-size" min="160" max="360" value="220" style="flex:1;accent-color:var(--gold);" oninput="resizePhoto(this.value)"><span id="photo-size-val" style="font-size:11px;color:var(--text-3);min-width:40px;">220px</span></div>
       </div>
-      <div style="display:flex;gap:8px;margin-top:4px;">
-        <button class="adm-btn adm-btn-g" onclick="saveProf()">Save profile</button>
-        <button class="adm-btn" style="background:var(--gold);color:#fff;border:none;" onclick="applyPhoto()">Save photo</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="adm-btn adm-btn-g" onclick="saveProf()">Save Profile</button>
+        <button class="adm-btn" style="background:var(--gold);color:#fff;border:none;" onclick="applyPhoto()">Save Photo</button>
       </div>
     </div>
     <hr class="adm-hr">
@@ -570,66 +570,62 @@ footer{border-top:1px solid var(--border);background:var(--deep-2);padding:26px 
       <div class="adm-stl">Hero Skill Tags</div>
       <div id="tag-wrap" class="tag-wrap"></div>
       <input class="adm-inp" id="tag-inp" placeholder="Type tag + Enter" onkeydown="handleTag(event)" style="margin-top:8px;">
-      <div style="margin-top:10px;"><button class="adm-btn adm-btn-g" onclick="saveTags()">Save tags</button></div>
+      <div style="margin-top:10px;"><button class="adm-btn adm-btn-g" onclick="saveTags()">Save Tags</button></div>
     </div>
     <hr class="adm-hr">
     <div class="adm-sec">
       <div class="adm-stl">AI Projects</div>
-      <div id="proj-list" class="adm-item-list"></div>
-      <div id="proj-list" class="adm-item-list" style="margin-bottom:12px;"></div>
-      <div class="adm-add" style="margin-top:14px;">
+      <div id="proj-list" class="adm-item-list" style="margin-bottom:10px;"></div>
+      <div class="adm-add">
         <div class="adm-add-ttl">Add new project</div>
         <div class="adm-fld"><label class="adm-lbl">Name</label><input class="adm-inp" id="ap-n" placeholder="My New App"></div>
         <div class="adm-fld"><label class="adm-lbl">Description</label><textarea class="adm-ta" id="ap-d"></textarea></div>
         <div class="adm-fld"><label class="adm-lbl">Live URL (optional)</label><input class="adm-inp" id="ap-u" placeholder="https://myapp.netlify.app"></div>
         <div class="adm-fld"><label class="adm-lbl">Screenshot</label><input type="file" class="adm-inp" id="ap-i" accept="image/*" style="padding:7px;"></div>
-        <div class="adm-fld"><label class="adm-lbl">Demo credentials (optional)</label><input class="adm-inp" id="ap-dm" placeholder="email: demo@app.com · pass: demo1234"></div>
+        <div class="adm-fld"><label class="adm-lbl">Demo credentials (optional)</label><input class="adm-inp" id="ap-dm" placeholder="email: demo@app.com / pass: demo1234"></div>
         <div class="adm-fld"><label class="adm-lbl">Tags (comma separated)</label><input class="adm-inp" id="ap-t" placeholder="AI, Productivity, Web"></div>
-        <button class="adm-btn adm-btn-g" onclick="addProj()">+ Add project</button>
+        <button class="adm-btn adm-btn-g" onclick="addProj()">+ Add Project</button>
       </div>
     </div>
     <hr class="adm-hr">
     <div class="adm-sec">
       <div class="adm-stl">Design Portfolio</div>
-      <div id="gal-list" class="adm-item-list"></div>
-      <div id="gal-list" class="adm-item-list" style="margin-bottom:12px;"></div>
-      <div class="adm-add" style="margin-top:14px;">
+      <div id="gal-list" class="adm-item-list" style="margin-bottom:10px;"></div>
+      <div class="adm-add">
         <div class="adm-add-ttl">Add new item</div>
         <div class="adm-fld"><label class="adm-lbl">Category</label><select class="adm-sel" id="ag-c"><option value="certs">Certificates</option><option value="posters">Posters & Tickets</option><option value="logos">Logos & Branding</option></select></div>
         <div class="adm-fld"><label class="adm-lbl">Title</label><input class="adm-inp" id="ag-ti" placeholder="Certificate of Recognition"></div>
         <div class="adm-fld"><label class="adm-lbl">Description</label><input class="adm-inp" id="ag-su" placeholder="Event name, year, client"></div>
         <div class="adm-fld"><label class="adm-lbl">Image</label><input type="file" class="adm-inp" id="ag-i" accept="image/*" style="padding:7px;"></div>
-        <button class="adm-btn adm-btn-g" onclick="addGal()">+ Add to gallery</button>
+        <button class="adm-btn adm-btn-g" onclick="addGal()">+ Add to Gallery</button>
       </div>
     </div>
     <hr class="adm-hr">
     <div class="adm-sec">
       <div class="adm-stl">Social Media Pages</div>
-      <div id="soc-list" class="adm-item-list"></div>
-      <div id="soc-list" class="adm-item-list" style="margin-bottom:12px;"></div>
-      <div class="adm-add" style="margin-top:14px;">
+      <div id="soc-list" class="adm-item-list" style="margin-bottom:10px;"></div>
+      <div class="adm-add">
         <div class="adm-add-ttl">Add new social page</div>
-        <div class="adm-fld"><label class="adm-lbl">Handle</label><input class="adm-inp" id="as-handle" placeholder="@mypage"></div>
+        <div class="adm-fld"><label class="adm-lbl">Handle (e.g. @mypage)</label><input class="adm-inp" id="as-handle" placeholder="@mypage"></div>
         <div class="adm-fld"><label class="adm-lbl">Brand name</label><input class="adm-inp" id="as-name" placeholder="My Brand"></div>
         <div class="adm-fld"><label class="adm-lbl">Description</label><textarea class="adm-ta" id="as-desc"></textarea></div>
         <div class="adm-fld"><label class="adm-lbl">Profile URL</label><input class="adm-inp" id="as-url" placeholder="https://instagram.com/mypage"></div>
         <div class="adm-fld"><label class="adm-lbl">Preview screenshot</label><input type="file" class="adm-inp" id="as-img" accept="image/*" style="padding:7px;"></div>
-        <button class="adm-btn adm-btn-g" onclick="addSoc()">+ Add page</button>
+        <button class="adm-btn adm-btn-g" onclick="addSoc()">+ Add Page</button>
       </div>
     </div>
     <hr class="adm-hr">
     <div class="adm-sec">
       <div class="adm-stl">Work Experience</div>
-      <div id="exp-list" class="adm-item-list"></div>
-      <div id="exp-list" class="adm-item-list" style="margin-bottom:12px;"></div>
-      <div class="adm-add" style="margin-top:14px;">
+      <div id="exp-list" class="adm-item-list" style="margin-bottom:10px;"></div>
+      <div class="adm-add">
         <div class="adm-add-ttl">Add new experience</div>
         <div class="adm-fld"><label class="adm-lbl">Date range</label><input class="adm-inp" id="ae-date" placeholder="Jan 2024 — Present"></div>
         <div class="adm-fld"><label class="adm-lbl">Role / title</label><input class="adm-inp" id="ae-role" placeholder="Executive Assistant"></div>
         <div class="adm-fld"><label class="adm-lbl">Company & location</label><input class="adm-inp" id="ae-co" placeholder="Company · Remote, USA"></div>
         <div class="adm-fld"><label class="adm-lbl">Bullet points (one per line)</label><textarea class="adm-ta" style="height:90px;" id="ae-pts" placeholder="Managed CRM systems&#10;Coordinated with teams"></textarea></div>
         <div class="adm-fld"><label class="adm-lbl">Current role?</label><select class="adm-sel" id="ae-curr"><option value="no">No</option><option value="yes">Yes — show badge</option></select></div>
-        <button class="adm-btn adm-btn-g" onclick="addExp()">+ Add experience</button>
+        <button class="adm-btn adm-btn-g" onclick="addExp()">+ Add Experience</button>
       </div>
     </div>
   </div>
@@ -638,133 +634,341 @@ footer{border-top:1px solid var(--border);background:var(--deep-2);padding:26px 
 </div>
 
 <script>
+
 // LIGHTBOX
 function lb(src,cap){document.getElementById('lb-img').src=src;document.getElementById('lb-cap').textContent=cap||'';document.getElementById('lb-ov').classList.add('on');document.body.style.overflow='hidden';}
 function lbClose(){document.getElementById('lb-ov').classList.remove('on');document.body.style.overflow='';}
 
 // GALLERY TABS
 function gtab(id,btn){
-  document.querySelectorAll('.g-panel').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.g-tab').forEach(b=>b.classList.remove('on'));
-  const p=document.getElementById('tab-'+id);if(p)p.classList.add('on');if(btn)btn.classList.add('on');
+  document.querySelectorAll('.g-panel').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.g-tab').forEach(function(b){b.classList.remove('on');});
+  var p=document.getElementById('tab-'+id);
+  if(p)p.classList.add('on');
+  if(btn)btn.classList.add('on');
 }
 
 // SLIDESHOW
-let slideIdx=0;
-const totalSlides=3;
+var slideIdx=0;
+var totalSlides=3;
 function goSlide(n){
-  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===n));
-  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===n));
+  document.querySelectorAll('.slide').forEach(function(s,i){s.classList.toggle('active',i===n);});
+  document.querySelectorAll('.dot').forEach(function(d,i){d.classList.toggle('active',i===n);});
   slideIdx=n;
   document.getElementById('slide-counter').textContent=(n+1)+' / '+totalSlides;
 }
 function nextSlide(){goSlide((slideIdx+1)%totalSlides);}
 function prevSlide(){goSlide((slideIdx-1+totalSlides)%totalSlides);}
-setInterval(()=>nextSlide(),5000);
+setInterval(function(){nextSlide();},5000);
 
 // CONTACT FORM
 async function sendMsg(e){
   e.preventDefault();
-  const btn=document.getElementById('f-btn');
-  const ok=document.getElementById('f-ok');
-  const err=document.getElementById('f-err');
+  var btn=document.getElementById('f-btn');
+  var ok=document.getElementById('f-ok');
+  var err=document.getElementById('f-err');
   btn.textContent='Sending...';btn.disabled=true;
   err.style.display='none';ok.style.display='none';
   try{
-    const res=await fetch('https://formspree.io/f/xnjyaqde',{method:'POST',body:new FormData(document.getElementById('ct-frm')),headers:{'Accept':'application/json'}});
-    const data=await res.json();
-    if(res.ok){ok.style.display='block';document.getElementById('ct-frm').reset();btn.textContent='Message sent ✓';}
+    var res=await fetch('https://formspree.io/f/xnjyaqde',{method:'POST',body:new FormData(document.getElementById('ct-frm')),headers:{'Accept':'application/json'}});
+    var data=await res.json();
+    if(res.ok){ok.style.display='block';document.getElementById('ct-frm').reset();btn.textContent='Message sent!';}
     else throw new Error(data.error||'Failed');
-  }catch(e){err.style.display='block';btn.textContent='Send message';btn.disabled=false;}
+  }catch(ex){err.style.display='block';btn.textContent='Send message';btn.disabled=false;}
 }
 
-// ADMIN
-let cvBlob=null;
-let tags=['CRM Management','AI Automation','Executive Support','Project Coordination','Remote Operations'];
-let pCount=4;
-let socCount=2;
+// ADMIN CORE
+var cvBlob=null;
+var heroTags=['CRM Management','AI Automation','Executive Support','Project Coordination','Remote Operations'];
+var projCount=4;
+var socCount=2;
 
-function openAdm(){document.getElementById('adm-ov').classList.add('on');document.body.style.overflow='hidden';renderTags();renderProjList();renderGalList();renderSocList();renderExpList();}
+function openAdm(){
+  document.getElementById('adm-ov').classList.add('on');
+  document.body.style.overflow='hidden';
+  renderTags();
+  renderProjList();
+  renderGalList();
+  renderSocList();
+  renderExpList();
+}
 function closeAdm(){document.getElementById('adm-ov').classList.remove('on');document.body.style.overflow='';}
 function admOv(e){if(e.target===document.getElementById('adm-ov'))closeAdm();}
-function admMsg(t,type='ok'){const el=document.getElementById('adm-msg');el.textContent=t;el.className='adm-msg '+type;el.style.display='block';setTimeout(()=>el.style.display='none',3000);}
-function dlCV(){window.open('https://drive.google.com/uc?export=download&id=1eV_v9YsUOO4oODNw8kYoie5XjAe5pZXM','_blank');}
+function admMsg(t,type){
+  type=type||'ok';
+  var el=document.getElementById('adm-msg');
+  el.textContent=t;el.className='adm-msg '+type;el.style.display='block';
+  setTimeout(function(){el.style.display='none';},3000);
+}
 
-function previewPhoto(input){if(!input.files[0])return;const r=new FileReader();r.onload=e=>{document.getElementById('photo-preview').src=e.target.result;document.getElementById('photo-preview-wrap').style.display='block';};r.readAsDataURL(input.files[0]);}
-function applyPhoto(){const input=document.getElementById('a-photo');if(!input.files[0]){admMsg('Please select a photo first.','err');return;}const r=new FileReader();r.onload=e=>{document.getElementById('hero-photo').src=e.target.result;document.getElementById('photo-preview-wrap').style.display='none';input.value='';admMsg('✓ Photo updated!');};r.readAsDataURL(input.files[0]);}
-function resizePhoto(val){document.getElementById('photo-size-val').textContent=val+'px';document.querySelector('.hero-photo-col').style.setProperty('--photo-w',val+'px');document.querySelector('.stat-bar').style.width=val+'px';}
+// PHOTO
+function previewPhoto(input){
+  if(!input.files[0])return;
+  var r=new FileReader();
+  r.onload=function(e2){document.getElementById('photo-preview').src=e2.target.result;document.getElementById('photo-preview-wrap').style.display='block';};
+  r.readAsDataURL(input.files[0]);
+}
+function applyPhoto(){
+  var input=document.getElementById('a-photo');
+  if(!input.files[0]){admMsg('Please select a photo first.','err');return;}
+  var r=new FileReader();
+  r.onload=function(e2){document.getElementById('hero-photo').src=e2.target.result;document.getElementById('photo-preview-wrap').style.display='none';input.value='';admMsg('Photo updated!');};
+  r.readAsDataURL(input.files[0]);
+}
+function resizePhoto(val){
+  document.getElementById('photo-size-val').textContent=val+'px';
+  document.querySelector('.hero-photo-col').style.setProperty('--photo-w',val+'px');
+  document.querySelector('.stat-bar').style.width=val+'px';
+}
 
+// PROFILE
 function saveProf(){
-  const fn=document.getElementById('a-fn').value.trim(),ln=document.getElementById('a-ln').value.trim();
+  var fn=document.getElementById('a-fn').value.trim();
+  var ln=document.getElementById('a-ln').value.trim();
   document.querySelector('.nav-logo').innerHTML=fn+' <span>'+ln+'</span>';
   document.querySelector('.hero h1').innerHTML=fn+'<br><em>'+ln+'</em>';
   document.querySelector('.hero-eyebrow').textContent=document.getElementById('a-av').value.trim();
   document.querySelector('.hero-role').textContent=document.getElementById('a-ro').value.trim();
   document.querySelector('.hero-bio').textContent=document.getElementById('a-bi').value.trim();
-  const cv=document.getElementById('a-cv').files[0];if(cv)cvBlob=URL.createObjectURL(cv);
-  admMsg('✓ Profile updated!');
+  var cv=document.getElementById('a-cv').files[0];
+  if(cv)cvBlob=URL.createObjectURL(cv);
+  admMsg('Profile updated!');
 }
 
-function renderTags(){const w=document.getElementById('tag-wrap');w.innerHTML='';tags.forEach((t,i)=>{const c=document.createElement('span');c.className='tag-chip';c.innerHTML=t+' <button onclick="rmTag('+i+')">×</button>';w.appendChild(c);});}
-function rmTag(i){tags.splice(i,1);renderTags();}
-function handleTag(e){if(e.key==='Enter'){const v=document.getElementById('tag-inp').value.trim();if(v&&!tags.includes(v)){tags.push(v);document.getElementById('tag-inp').value='';renderTags();}
+// TAGS
+function renderTags(){
+  var w=document.getElementById('tag-wrap');w.innerHTML='';
+  heroTags.forEach(function(t,i){
+    var c=document.createElement('span');c.className='tag-chip';
+    c.innerHTML=t+' <button onclick="rmTag('+i+')">x</button>';
+    w.appendChild(c);
+  });
 }
-function saveTags(){document.getElementById('hero-tags').innerHTML=tags.map(t=>`<span class="hero-tag">${t}</span>`).join('');admMsg('✓ Tags updated!');}
+function rmTag(i){heroTags.splice(i,1);renderTags();}
+function handleTag(e){
+  if(e.key==='Enter'){
+    var v=document.getElementById('tag-inp').value.trim();
+    if(v&&heroTags.indexOf(v)===-1){heroTags.push(v);document.getElementById('tag-inp').value='';renderTags();}
+  }
+}
+function saveTags(){
+  document.getElementById('hero-tags').innerHTML=heroTags.map(function(t){return '<span class="hero-tag">'+t+'</span>';}).join('');
+  admMsg('Tags updated!');
+}
 
-function renderProjList(){const list=document.getElementById('proj-list');list.innerHTML='';document.querySelectorAll('.proj-card').forEach(card=>{const id=card.id;const name=card.querySelector('.proj-name');if(!id||!name)return;const item=document.createElement('div');item.className='adm-item';item.innerHTML=`<div class="adm-item-info"><div class="adm-item-name">${name.textContent}</div></div><button class="adm-item-del" onclick="delProj('${id}')">Remove</button>`;list.appendChild(item);});if(!list.children.length)list.innerHTML='<div style="font-size:12px;color:var(--text-3);padding:8px 0;">No projects yet.</div>';}
-function delProj(id){if(!confirm('Remove this project?'))return;const el=document.getElementById(id);if(el)el.remove();renderProjList();admMsg('✓ Removed!');}
+// PROJECTS
+function renderProjList(){
+  var list=document.getElementById('proj-list');list.innerHTML='';
+  var cards=document.querySelectorAll('.proj-card');
+  if(!cards.length){list.innerHTML='<p style="font-size:12px;color:var(--text-3);">No projects yet.</p>';return;}
+  cards.forEach(function(card){
+    var id=card.id;var nameEl=card.querySelector('.proj-name');
+    if(!id||!nameEl)return;
+    var row=document.createElement('div');row.className='adm-item';
+    var btn=document.createElement('button');btn.className='adm-item-del';btn.textContent='Remove';
+    btn.setAttribute('data-id',id);
+    btn.addEventListener('click',function(){delProj(this.getAttribute('data-id'));});
+    var info=document.createElement('div');info.className='adm-item-info';
+    info.innerHTML='<div class="adm-item-name">'+nameEl.textContent+'</div>';
+    row.appendChild(info);row.appendChild(btn);list.appendChild(row);
+  });
+}
+function delProj(id){
+  if(!confirm('Remove this project?'))return;
+  var el=document.getElementById(id);if(el)el.remove();
+  renderProjList();admMsg('Project removed!');
+}
 function addProj(){
-  const name=document.getElementById('ap-n').value.trim();if(!name){admMsg('Enter a project name.','err');return;}
-  const desc=document.getElementById('ap-d').value.trim(),url=document.getElementById('ap-u').value.trim(),demo=document.getElementById('ap-dm').value.trim(),traw=document.getElementById('ap-t').value.trim();
-  const imgFile=document.getElementById('ap-i').files[0];pCount++;
-  const tHtml=traw.split(',').map(t=>`<span class="proj-tag">${t.trim()}</span>`).join('');
-  const dHtml=demo?`<div class="proj-demo"><div class="proj-demo-lbl">🔑 Try the demo</div><div class="proj-demo-creds">${demo}</div></div>`:'';
-  const lHtml=url?`<a href="${url}" target="_blank" class="proj-lnk">View live app ↗</a>`:`<span class="proj-lnk muted">Coming soon</span>`;
-  const mk=(imgSrc)=>{const card=document.createElement(url?'a':'div');if(url){card.href=url;card.target='_blank';}card.id='proj-'+pCount;card.className='proj-card'+(url?'':' no-link');const ssC=imgSrc?`onclick="event.preventDefault();lb('${imgSrc}','${name}')" title="Click to zoom"`:'';card.innerHTML=`<div class="proj-ss" ${ssC}>${imgSrc?`<img src="${imgSrc}" alt="${name}" />`:'<div style="height:100%;background:var(--cream-3);display:flex;align-items:center;justify-content:center;font-size:32px;">🚀</div>'}</div><div class="proj-body"><span class="proj-num">0${pCount} / 0${pCount}</span><div class="proj-name">${name}</div><div class="proj-desc">${desc}</div>${dHtml}<div class="proj-tags">${tHtml}</div>${lHtml}</div>`;document.querySelector('.proj-grid').appendChild(card);['ap-n','ap-d','ap-u','ap-dm','ap-t'].forEach(id=>document.getElementById(id).value='');document.getElementById('ap-i').value='';renderProjList();admMsg('✓ Project added!');};
-  if(imgFile){const r=new FileReader();r.onload=e=>mk(e.target.result);r.readAsDataURL(imgFile);}else mk(null);
+  var name=document.getElementById('ap-n').value.trim();
+  if(!name){admMsg('Enter a project name.','err');return;}
+  var desc=document.getElementById('ap-d').value.trim();
+  var url=document.getElementById('ap-u').value.trim();
+  var demo=document.getElementById('ap-dm').value.trim();
+  var traw=document.getElementById('ap-t').value.trim();
+  var imgFile=document.getElementById('ap-i').files[0];
+  projCount++;
+  var tHtml=traw.split(',').map(function(t){return '<span class="proj-tag">'+t.trim()+'</span>';}).join('');
+  var dHtml=demo?'<div class="proj-demo"><div class="proj-demo-lbl">Try the demo</div><div class="proj-demo-creds">'+demo+'</div></div>':'';
+  var lHtml=url?'<a href="'+url+'" target="_blank" class="proj-lnk">View live app</a>':'<span class="proj-lnk muted">Coming soon</span>';
+  var newId='proj-'+projCount;
+  function mkCard(imgSrc){
+    var card=document.createElement(url?'a':'div');
+    if(url){card.href=url;card.target='_blank';}
+    card.id=newId;card.className='proj-card'+(url?'':' no-link');
+    var ssHtml=imgSrc?'<img src="'+imgSrc+'" alt="'+name+'" />':'';
+    card.innerHTML='<div class="proj-ss">'+ssHtml+'</div><div class="proj-body"><span class="proj-num">0'+projCount+' / 0'+projCount+'</span><div class="proj-name">'+name+'</div><div class="proj-desc">'+desc+'</div>'+dHtml+'<div class="proj-tags">'+tHtml+'</div>'+lHtml+'</div>';
+    if(imgSrc){
+      card.querySelector('.proj-ss').setAttribute('onclick','event.preventDefault();lb("'+imgSrc+'","'+name+'")');
+      card.querySelector('.proj-ss').title='Click to zoom';
+    }
+    document.querySelector('.proj-grid').appendChild(card);
+    ['ap-n','ap-d','ap-u','ap-dm','ap-t'].forEach(function(fid){document.getElementById(fid).value='';});
+    document.getElementById('ap-i').value='';
+    renderProjList();admMsg('Project added!');
+  }
+  if(imgFile){var r=new FileReader();r.onload=function(e2){mkCard(e2.target.result);};r.readAsDataURL(imgFile);}
+  else mkCard(null);
 }
 
-function renderGalList(){const list=document.getElementById('gal-list');list.innerHTML='';document.querySelectorAll('.g-card').forEach(card=>{const id=card.id;const title=card.querySelector('.g-title');if(!id||!title)return;const sub=card.querySelector('.g-sub');const item=document.createElement('div');item.className='adm-item';item.innerHTML=`<div class="adm-item-info"><div class="adm-item-name">${title.textContent}</div><div class="adm-item-sub">${sub?sub.textContent:''}</div></div><button class="adm-item-del" onclick="delGal('${id}')">Remove</button>`;list.appendChild(item);});if(!list.children.length)list.innerHTML='<div style="font-size:12px;color:var(--text-3);padding:8px 0;">No items yet.</div>';}
-function delGal(id){if(!confirm('Remove this item?'))return;const el=document.getElementById(id);if(el)el.remove();renderGalList();admMsg('✓ Removed!');}
+// GALLERY
+function renderGalList(){
+  var list=document.getElementById('gal-list');list.innerHTML='';
+  var cards=document.querySelectorAll('.g-card');
+  if(!cards.length){list.innerHTML='<p style="font-size:12px;color:var(--text-3);">No items yet.</p>';return;}
+  cards.forEach(function(card){
+    var id=card.id;var titleEl=card.querySelector('.g-title');
+    if(!id||!titleEl)return;
+    var subEl=card.querySelector('.g-sub');
+    var row=document.createElement('div');row.className='adm-item';
+    var btn=document.createElement('button');btn.className='adm-item-del';btn.textContent='Remove';
+    btn.setAttribute('data-id',id);
+    btn.addEventListener('click',function(){delGal(this.getAttribute('data-id'));});
+    var info=document.createElement('div');info.className='adm-item-info';
+    info.innerHTML='<div class="adm-item-name">'+titleEl.textContent+'</div><div class="adm-item-sub">'+(subEl?subEl.textContent:'')+'</div>';
+    row.appendChild(info);row.appendChild(btn);list.appendChild(row);
+  });
+}
+function delGal(id){
+  if(!confirm('Remove this item?'))return;
+  var el=document.getElementById(id);if(el)el.remove();
+  renderGalList();admMsg('Item removed!');
+}
 function addGal(){
-  const cat=document.getElementById('ag-c').value,title=document.getElementById('ag-ti').value.trim();if(!title){admMsg('Enter a title.','err');return;}
-  const sub=document.getElementById('ag-su').value.trim(),imgFile=document.getElementById('ag-i').files[0];
-  const ratio=cat==='posters'?'ratio-ticket':cat==='logos'?'ratio-logo':'ratio-land';
-  const mk=(imgSrc)=>{const c=document.createElement('div');const gid='gal-'+(document.querySelectorAll('.g-card').length+1);c.id=gid;c.className='g-card';const sc=title.replace(/'/g,'');c.innerHTML=`<div class="g-img ${ratio}" onclick="lb('${imgSrc||''}','${sc}')" title="Click to zoom">${imgSrc?`<img src="${imgSrc}" alt="${sc}" />`:'<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:32px;">📄</div>'}</div><div class="g-body"><div class="g-title">${title}</div><div class="g-sub">${sub}</div></div>`;const panel=document.getElementById('tab-'+cat);const grid=panel&&panel.querySelector('.g-grid,.g-grid-2');if(grid)grid.appendChild(c);gtab(cat,document.querySelector(`[onclick="gtab('${cat}',this)"]`));['ag-ti','ag-su'].forEach(id=>document.getElementById(id).value='');document.getElementById('ag-i').value='';renderGalList();admMsg('✓ Added!');};
-  if(imgFile){const r=new FileReader();r.onload=e=>mk(e.target.result);r.readAsDataURL(imgFile);}else mk(null);
+  var cat=document.getElementById('ag-c').value;
+  var title=document.getElementById('ag-ti').value.trim();
+  if(!title){admMsg('Enter a title.','err');return;}
+  var sub=document.getElementById('ag-su').value.trim();
+  var imgFile=document.getElementById('ag-i').files[0];
+  var ratio=cat==='posters'?'ratio-ticket':cat==='logos'?'ratio-logo':'ratio-land';
+  var gid='gal-'+(document.querySelectorAll('.g-card').length+1);
+  function mkCard(imgSrc){
+    var c=document.createElement('div');c.id=gid;c.className='g-card';
+    var imgHtml=imgSrc?'<img src="'+imgSrc+'" alt="'+title+'" />':'';
+    var div=document.createElement('div');div.className='g-img '+ratio;
+    div.innerHTML=imgHtml;
+    if(imgSrc){div.style.cursor='zoom-in';div.setAttribute('onclick','lb("'+imgSrc+'","'+title+'")');div.title='Click to zoom';}
+    var body=document.createElement('div');body.className='g-body';
+    body.innerHTML='<div class="g-title">'+title+'</div><div class="g-sub">'+sub+'</div>';
+    c.appendChild(div);c.appendChild(body);
+    var panel=document.getElementById('tab-'+cat);
+    var grid=panel&&(panel.querySelector('.g-grid')||panel.querySelector('.g-grid-2'));
+    if(grid)grid.appendChild(c);
+    var tabBtn=document.querySelector('[data-tab="'+cat+'"]');
+    gtab(cat,tabBtn);
+    ['ag-ti','ag-su'].forEach(function(fid){document.getElementById(fid).value='';});
+    document.getElementById('ag-i').value='';
+    renderGalList();admMsg('Added to gallery!');
+  }
+  if(imgFile){var r=new FileReader();r.onload=function(e2){mkCard(e2.target.result);};r.readAsDataURL(imgFile);}
+  else mkCard(null);
 }
 
-function renderSocList(){const list=document.getElementById('soc-list');list.innerHTML='';document.querySelectorAll('.soc-card').forEach(card=>{const id=card.id;const handle=card.querySelector('.soc-handle');if(!id||!handle)return;const brand=card.querySelector('.soc-brand');const item=document.createElement('div');item.className='adm-item';item.innerHTML=`<div class="adm-item-info"><div class="adm-item-name">${handle.textContent}</div><div class="adm-item-sub">${brand?brand.textContent:''}</div></div><button class="adm-item-del" onclick="delSoc('${id}')">Remove</button>`;list.appendChild(item);});if(!list.children.length)list.innerHTML='<div style="font-size:12px;color:var(--text-3);padding:8px 0;">No social pages yet.</div>';}
-function delSoc(id){if(!confirm('Remove?'))return;const el=document.getElementById(id);if(el)el.remove();renderSocList();admMsg('✓ Removed!');}
+// SOCIAL
+function renderSocList(){
+  var list=document.getElementById('soc-list');list.innerHTML='';
+  var cards=document.querySelectorAll('.soc-card');
+  if(!cards.length){list.innerHTML='<p style="font-size:12px;color:var(--text-3);">No pages yet.</p>';return;}
+  cards.forEach(function(card){
+    var id=card.id;var handleEl=card.querySelector('.soc-handle');
+    if(!id||!handleEl)return;
+    var brandEl=card.querySelector('.soc-brand');
+    var row=document.createElement('div');row.className='adm-item';
+    var btn=document.createElement('button');btn.className='adm-item-del';btn.textContent='Remove';
+    btn.setAttribute('data-id',id);
+    btn.addEventListener('click',function(){delSoc(this.getAttribute('data-id'));});
+    var info=document.createElement('div');info.className='adm-item-info';
+    info.innerHTML='<div class="adm-item-name">'+handleEl.textContent+'</div><div class="adm-item-sub">'+(brandEl?brandEl.textContent:'')+'</div>';
+    row.appendChild(info);row.appendChild(btn);list.appendChild(row);
+  });
+}
+function delSoc(id){
+  if(!confirm('Remove this page?'))return;
+  var el=document.getElementById(id);if(el)el.remove();
+  renderSocList();admMsg('Page removed!');
+}
 function addSoc(){
-  const handle=document.getElementById('as-handle').value.trim();if(!handle){admMsg('Enter a handle.','err');return;}
-  const name=document.getElementById('as-name').value.trim(),desc=document.getElementById('as-desc').value.trim(),url=document.getElementById('as-url').value.trim();
-  const imgFile=document.getElementById('as-img').files[0];socCount++;
-  const igSvg=`<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
-  const mk=(imgSrc)=>{const card=document.createElement('div');card.id='soc-'+socCount;card.className='soc-card';card.innerHTML=`<div class="soc-plat">${igSvg} Instagram</div><div class="soc-handle">${handle}</div><div class="soc-brand">${name}</div><div class="soc-desc">${desc}</div>${imgSrc?`<div class="soc-preview" onclick="lb('${imgSrc}','${handle}')" title="Click to zoom"><img src="${imgSrc}" alt="${handle}" /></div>`:''}${url?`<a href="${url}" target="_blank" class="soc-lnk">View on Instagram ↗</a>`:''}`; document.querySelector('.soc-grid').appendChild(card);['as-handle','as-name','as-desc','as-url'].forEach(id=>document.getElementById(id).value='');document.getElementById('as-img').value='';renderSocList();admMsg('✓ Added!');};
-  if(imgFile){const r=new FileReader();r.onload=e=>mk(e.target.result);r.readAsDataURL(imgFile);}else mk(null);
+  var handle=document.getElementById('as-handle').value.trim();
+  if(!handle){admMsg('Enter a handle.','err');return;}
+  var name=document.getElementById('as-name').value.trim();
+  var desc=document.getElementById('as-desc').value.trim();
+  var url=document.getElementById('as-url').value.trim();
+  var imgFile=document.getElementById('as-img').files[0];
+  socCount++;
+  var newId='soc-'+socCount;
+  function mkCard(imgSrc){
+    var card=document.createElement('div');card.id=newId;card.className='soc-card';
+    var previewHtml='';
+    if(imgSrc){var pd=document.createElement('div');pd.className='soc-preview';pd.style.cursor='zoom-in';pd.setAttribute('onclick','lb("'+imgSrc+'","'+handle+'")');pd.title='Click to zoom';var pi=document.createElement('img');pi.src=imgSrc;pi.alt=handle;pd.appendChild(pi);previewHtml=pd.outerHTML;}
+    var linkHtml=url?'<a href="'+url+'" target="_blank" class="soc-lnk">View on Instagram</a>':'';
+    card.innerHTML='<div class="soc-plat">Instagram</div><div class="soc-handle">'+handle+'</div><div class="soc-brand">'+name+'</div><div class="soc-desc">'+desc+'</div>'+previewHtml+linkHtml;
+    document.querySelector('.soc-grid').appendChild(card);
+    ['as-handle','as-name','as-desc','as-url'].forEach(function(fid){document.getElementById(fid).value='';});
+    document.getElementById('as-img').value='';
+    renderSocList();admMsg('Page added!');
+  }
+  if(imgFile){var r=new FileReader();r.onload=function(e2){mkCard(e2.target.result);};r.readAsDataURL(imgFile);}
+  else mkCard(null);
 }
 
-function renderExpList(){const list=document.getElementById('exp-list');list.innerHTML='';document.querySelectorAll('.exp-item').forEach(item=>{const id=item.id;const role=item.querySelector('.exp-role');if(!id||!role)return;const co=item.querySelector('.exp-co');const date=item.querySelector('.exp-date');const el=document.createElement('div');el.className='adm-item';el.innerHTML=`<div class="adm-item-info"><div class="adm-item-name">${role.textContent}</div><div class="adm-item-sub">${co?co.textContent:''} ${date?'· '+date.textContent:''}</div></div><button class="adm-item-del" onclick="delExp('${id}')">Remove</button>`;list.appendChild(el);});if(!list.children.length)list.innerHTML='<div style="font-size:12px;color:var(--text-3);padding:8px 0;">No experience yet.</div>';}
-function delExp(id){if(!confirm('Remove this experience?'))return;const el=document.getElementById(id);if(el)el.remove();renderExpList();admMsg('✓ Removed!');}
+// EXPERIENCE
+function renderExpList(){
+  var list=document.getElementById('exp-list');list.innerHTML='';
+  var items=document.querySelectorAll('.exp-item');
+  if(!items.length){list.innerHTML='<p style="font-size:12px;color:var(--text-3);">No experience yet.</p>';return;}
+  items.forEach(function(item){
+    var id=item.id;var roleEl=item.querySelector('.exp-role');
+    if(!id||!roleEl)return;
+    var coEl=item.querySelector('.exp-co');
+    var row=document.createElement('div');row.className='adm-item';
+    var btn=document.createElement('button');btn.className='adm-item-del';btn.textContent='Remove';
+    btn.setAttribute('data-id',id);
+    btn.addEventListener('click',function(){delExp(this.getAttribute('data-id'));});
+    var info=document.createElement('div');info.className='adm-item-info';
+    info.innerHTML='<div class="adm-item-name">'+roleEl.textContent+'</div><div class="adm-item-sub">'+(coEl?coEl.textContent:'')+'</div>';
+    row.appendChild(info);row.appendChild(btn);list.appendChild(row);
+  });
+}
+function delExp(id){
+  if(!confirm('Remove this experience?'))return;
+  var el=document.getElementById(id);if(el)el.remove();
+  renderExpList();admMsg('Experience removed!');
+}
 function addExp(){
-  const date=document.getElementById('ae-date').value.trim(),role=document.getElementById('ae-role').value.trim(),co=document.getElementById('ae-co').value.trim(),pts=document.getElementById('ae-pts').value.trim(),curr=document.getElementById('ae-curr').value;
+  var date=document.getElementById('ae-date').value.trim();
+  var role=document.getElementById('ae-role').value.trim();
+  var co=document.getElementById('ae-co').value.trim();
+  var pts=document.getElementById('ae-pts').value;
+  var curr=document.getElementById('ae-curr').value;
   if(!role){admMsg('Enter a role title.','err');return;}
-  const expCount=document.querySelectorAll('.exp-item').length+1;
-  const ptsHtml=pts.split('\n').filter(p=>p.trim()).map(p=>`<li>${p.trim()}</li>`).join('');
-  const badgeHtml=curr==='yes'?`<span class="exp-badge">Current role</span>`:'';
-  const item=document.createElement('div');item.id='exp-'+expCount;item.className='exp-item';
-  item.innerHTML=`<div><div class="exp-date">${date}</div>${badgeHtml}</div><div><div class="exp-role">${role}</div><div class="exp-co">${co}</div><ul class="exp-pts">${ptsHtml}</ul></div>`;
+  var expCount=document.querySelectorAll('.exp-item').length+1;
+  var ptsHtml=pts.split('\n').filter(function(p){return p.trim();}).map(function(p){return '<li>'+p.trim()+'</li>';}).join('');
+  var badgeHtml=curr==='yes'?'<span class="exp-badge">Current role</span>':'';
+  var item=document.createElement('div');
+  item.id='exp-'+expCount;item.className='exp-item';
+  item.innerHTML='<div><div class="exp-date">'+date+'</div>'+badgeHtml+'</div><div><div class="exp-role">'+role+'</div><div class="exp-co">'+co+'</div><ul class="exp-pts">'+ptsHtml+'</ul></div>';
   document.querySelector('.exp-list').appendChild(item);
-  ['ae-date','ae-role','ae-co','ae-pts'].forEach(id=>document.getElementById(id).value='');document.getElementById('ae-curr').value='no';
-  renderExpList();admMsg('✓ Experience added!');
-}}
+  ['ae-date','ae-role','ae-co','ae-pts'].forEach(function(fid){document.getElementById(fid).value='';});
+  document.getElementById('ae-curr').value='no';
+  renderExpList();admMsg('Experience added!');
+}
 
-// SECRET ADMIN ACCESS
-function showPwModal(){const m=document.getElementById('pw-modal');m.style.display='flex';document.getElementById('pw-input').value='';document.getElementById('pw-error').style.display='none';setTimeout(()=>document.getElementById('pw-input').focus(),100);}
+// SECRET ACCESS
+function showPwModal(){
+  document.getElementById('pw-modal').style.display='flex';
+  document.getElementById('pw-input').value='';
+  document.getElementById('pw-error').style.display='none';
+  setTimeout(function(){document.getElementById('pw-input').focus();},100);
+}
 function closePwModal(){document.getElementById('pw-modal').style.display='none';}
-function checkPw(){const val=document.getElementById('pw-input').value;if(val==='@M4ry11!$#'){closePwModal();openAdm();}else{document.getElementById('pw-error').style.display='block';document.getElementById('pw-input').value='';document.getElementById('pw-input').focus();}}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){lbClose();closeAdm();closePwModal();}});
+function checkPw(){
+  var val=document.getElementById('pw-input').value;
+  if(val==='@M4ry11!$#'){closePwModal();openAdm();}
+  else{document.getElementById('pw-error').style.display='block';document.getElementById('pw-input').value='';document.getElementById('pw-input').focus();}
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){lbClose();closeAdm();closePwModal();}
+});
+
 </script>
 </body>
 </html>
