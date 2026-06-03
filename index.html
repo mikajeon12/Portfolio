@@ -684,7 +684,7 @@ function openAdm(){document.getElementById('adm-ov').classList.add('on');documen
 function closeAdm(){document.getElementById('adm-ov').classList.remove('on');document.body.style.overflow='';}
 function admOv(e){if(e.target===document.getElementById('adm-ov'))closeAdm();}
 function admMsg(t,type='ok'){const el=document.getElementById('adm-msg');el.textContent=t;el.className='adm-msg '+type;el.style.display='block';setTimeout(()=>el.style.display='none',3000);}
-function dlCV(){window.open('https://drive.google.com/uc?export=download&id=1eV_v9YsUOO4oODNw8kYoie5XjAe5pZXM','_blank');}}
+function dlCV(){window.open('https://drive.google.com/uc?export=download&id=1eV_v9YsUOO4oODNw8kYoie5XjAe5pZXM','_blank');}
 
 function previewPhoto(input){if(!input.files[0])return;const r=new FileReader();r.onload=e=>{document.getElementById('photo-preview').src=e.target.result;document.getElementById('photo-preview-wrap').style.display='block';};r.readAsDataURL(input.files[0]);}
 function applyPhoto(){const input=document.getElementById('a-photo');if(!input.files[0]){admMsg('Please select a photo first.','err');return;}const r=new FileReader();r.onload=e=>{document.getElementById('hero-photo').src=e.target.result;document.getElementById('photo-preview-wrap').style.display='none';input.value='';admMsg('✓ Photo updated!');};r.readAsDataURL(input.files[0]);}
@@ -703,7 +703,8 @@ function saveProf(){
 
 function renderTags(){const w=document.getElementById('tag-wrap');w.innerHTML='';tags.forEach((t,i)=>{const c=document.createElement('span');c.className='tag-chip';c.innerHTML=t+' <button onclick="rmTag('+i+')">×</button>';w.appendChild(c);});}
 function rmTag(i){tags.splice(i,1);renderTags();}
-function handleTag(e){if(e.key==='Enter'){const v=document.getElementById('tag-inp').value.trim();if(v&&!tags.includes(v)){tags.push(v);document.getElementById('tag-inp').value='';renderTags();}}}
+function handleTag(e){if(e.key==='Enter'){const v=document.getElementById('tag-inp').value.trim();if(v&&!tags.includes(v)){tags.push(v);document.getElementById('tag-inp').value='';renderTags();}
+}
 function saveTags(){document.getElementById('hero-tags').innerHTML=tags.map(t=>`<span class="hero-tag">${t}</span>`).join('');admMsg('✓ Tags updated!');}
 
 function renderProjList(){const list=document.getElementById('proj-list');list.innerHTML='';document.querySelectorAll('.proj-card').forEach(card=>{const id=card.id;const name=card.querySelector('.proj-name');if(!id||!name)return;const item=document.createElement('div');item.className='adm-item';item.innerHTML=`<div class="adm-item-info"><div class="adm-item-name">${name.textContent}</div></div><button class="adm-item-del" onclick="delProj('${id}')">Remove</button>`;list.appendChild(item);});if(!list.children.length)list.innerHTML='<div style="font-size:12px;color:var(--text-3);padding:8px 0;">No projects yet.</div>';}
@@ -753,7 +754,7 @@ function addExp(){
   document.querySelector('.exp-list').appendChild(item);
   ['ae-date','ae-role','ae-co','ae-pts'].forEach(id=>document.getElementById(id).value='');document.getElementById('ae-curr').value='no';
   renderExpList();admMsg('✓ Experience added!');
-}
+}}
 
 // SECRET ADMIN ACCESS
 function showPwModal(){const m=document.getElementById('pw-modal');m.style.display='flex';document.getElementById('pw-input').value='';document.getElementById('pw-error').style.display='none';setTimeout(()=>document.getElementById('pw-input').focus(),100);}
