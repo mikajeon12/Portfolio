@@ -189,15 +189,6 @@ footer{border-top:1px solid var(--border);background:var(--deep-2);padding:26px 
 
 
 
-/* FLOATING SIDE NAV */
-#float-nav{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:200;display:flex;flex-direction:column;gap:13px;align-items:center;}
-.fn-item{position:relative;display:flex;align-items:center;justify-content:flex-end;cursor:pointer;width:20px;height:20px;}
-.fn-dot{width:7px;height:7px;border-radius:50%;background:rgba(196,180,154,0.5);border:1px solid rgba(184,148,106,0.5);transition:all 0.2s;flex-shrink:0;}
-.fn-item:hover .fn-dot,.fn-item.fn-active .fn-dot{background:var(--gold);border-color:var(--gold);transform:scale(1.3);}
-.fn-label{position:absolute;right:20px;top:50%;transform:translateY(-50%) translateX(4px);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);opacity:0;transition:all 0.18s;white-space:nowrap;background:rgba(253,248,240,0.96);padding:3px 9px;border:1px solid var(--border);pointer-events:none;}
-.fn-item:hover .fn-label{opacity:1;transform:translateY(-50%) translateX(0);}
-@media(max-width:960px){#float-nav{display:none;}}
-
 /* SLIDESHOW */
 #ops{border-top:1px solid var(--border);}
 .slideshow-wrap{position:relative;}
@@ -301,30 +292,6 @@ footer{border-top:1px solid var(--border);background:var(--deep-2);padding:26px 
   </div>
 </nav>
 
-<!-- FLOATING SIDE NAV -->
-<nav id="float-nav">
-  <div class="fn-item" onclick="document.getElementById('ops').scrollIntoView({behavior:'smooth'})">
-    <div class="fn-label">Operations</div><div class="fn-dot" data-section="ops"></div>
-  </div>
-  <div class="fn-item" onclick="document.getElementById('social').scrollIntoView({behavior:'smooth'})">
-    <div class="fn-label">Social Media</div><div class="fn-dot" data-section="social"></div>
-  </div>
-  <div class="fn-item" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
-    <div class="fn-label">Design Portfolio</div><div class="fn-dot" data-section="gallery"></div>
-  </div>
-  <div class="fn-item" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
-    <div class="fn-label">AI Projects</div><div class="fn-dot" data-section="projects"></div>
-  </div>
-  <div class="fn-item" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">
-    <div class="fn-label">Experience</div><div class="fn-dot" data-section="experience"></div>
-  </div>
-  <div class="fn-item" onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})">
-    <div class="fn-label">Skills</div><div class="fn-dot" data-section="skills"></div>
-  </div>
-  <div class="fn-item" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-    <div class="fn-label">Contact</div><div class="fn-dot" data-section="contact"></div>
-  </div>
-</nav>
 
 <div class="hero-wrap">
 <div class="hero">
@@ -1105,23 +1072,6 @@ function prevSlide(){goSlide((slideIdx-1+totalSlides)%totalSlides);}
 setInterval(()=>nextSlide(),5000);
 
 
-// FLOATING NAV ACTIVE STATE
-(function(){
-  const sections = ['ops','social','gallery','projects','experience','skills','contact'];
-  function updateFloatNav(){
-    let current = sections[0];
-    sections.forEach(id=>{
-      const el=document.getElementById(id);
-      if(el && window.scrollY >= el.offsetTop - 200) current=id;
-    });
-    document.querySelectorAll('.fn-item').forEach(item=>{
-      const dot=item.querySelector('.fn-dot');
-      item.classList.toggle('fn-active', dot&&dot.dataset.section===current);
-    });
-  }
-  window.addEventListener('scroll', updateFloatNav, {passive:true});
-  updateFloatNav();
-})();
 
 // SECRET ADMIN ACCESS
 function showPwModal(){
